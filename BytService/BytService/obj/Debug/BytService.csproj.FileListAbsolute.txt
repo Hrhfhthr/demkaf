@@ -1,0 +1,16 @@
+Q:\source\repos\demkaf\BytService\BytService\bin\Debug\BytService.exe.config
+Q:\source\repos\demkaf\BytService\BytService\bin\Debug\BytService.exe
+Q:\source\repos\demkaf\BytService\BytService\bin\Debug\BytService.pdb
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.csproj.AssemblyReference.cache
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.csproj.SuggestedBindingRedirects.cache
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\MainWindow.g.cs
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\App.g.cs
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService_MarkupCompile.cache
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService_MarkupCompile.lref
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\MainWindow.baml
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.g.resources
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.Properties.Resources.resources
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.csproj.GenerateResource.cache
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.csproj.CoreCompileInputs.cache
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.exe
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.pdb
