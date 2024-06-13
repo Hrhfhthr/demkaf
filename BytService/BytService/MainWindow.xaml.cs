@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace BytService
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static int userID;
         public int UserCheck(string login,string password)
         {
             int checkResult = 0;
@@ -29,6 +31,7 @@ namespace BytService
                 {
                     if (user.password == password)
                     {
+                        userID = user.userID;
                         if (user.type == "Менеджер")
                         {
                             checkResult = 1;

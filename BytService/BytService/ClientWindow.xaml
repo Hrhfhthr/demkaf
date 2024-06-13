@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BytService"
         mc:Ignorable="d"
-        Title="ClientWindow" Height="450" Width="800">
+        Title="Заказчик" Height="1080" Width="1920" MaxHeight="1080" MaxWidth="1920" MinHeight="580" MinWidth="1020">
     <Grid>
-        
+        <Button x:Name="ExitButton" Content="Выйти" HorizontalAlignment="Left" Margin="20,0,0,20" Background="#FFE88585" BorderBrush="#FFE88585" FontSize="20" Width="261" Click="ExitButton_Click" Height="31" VerticalAlignment="Bottom"/>
+        <Button x:Name="CreateRequestButton" Content="Создать заявку" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Gainsboro" BorderBrush="Gainsboro" FontSize="20" Width="261" Margin="20,20,0,0" Click="CreateRequestButton_Click"/>
+        <DataGrid x:Name="CreatedRequestsDataGrid" Margin="286,56,640,20" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер заявки" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата подачи" Binding="{Binding StartDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тип техники" Binding="{Binding Type}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Model}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Проблема" Binding="{Binding Problem}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата завершения" Binding="{Binding EndDate}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Мастер" Binding="{Binding Master}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="EditButton" Content="Изменить" Click="EditButton_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ChangeRequestButton" Content="Изменить заявку" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Gainsboro" BorderBrush="Gainsboro" FontSize="20" Width="261" Margin="20,56,0,0" Click="ChangeRequestButton_Click"/>
+        <Label x:Name="IDLabel" Content="Номер заявки:" HorizontalAlignment="Left" Margin="1285,22,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="StartDateLabel" Content="Дата подачи:" HorizontalAlignment="Left" Margin="1285,53,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TypeLabel" Content="Тип техники:" HorizontalAlignment="Left" Margin="1285,84,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ModelLabel" Content="Модель:" HorizontalAlignment="Left" Margin="1285,115,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ProblemLabel" Content="Проблема:" HorizontalAlignment="Left" Margin="1285,146,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="StatusLabel" Content="Статус:" HorizontalAlignment="Left" Margin="1285,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="EndDateLabel" Content="Дата завершения:" HorizontalAlignment="Left" Margin="1285,208,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="MasterLabel" Content="Мастер:" HorizontalAlignment="Left" Margin="1285,239,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="IDTextBox" HorizontalAlignment="Left" Margin="1398,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsReadOnly="True"/>
+        <TextBox x:Name="StartDateTextBox" HorizontalAlignment="Left" Margin="1398,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsReadOnly="True"/>
+        <TextBox x:Name="TypeTextBox" HorizontalAlignment="Left" Margin="1398,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357"/>
+        <TextBox x:Name="ModelTextBox" HorizontalAlignment="Left" Margin="1398,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357"/>
+        <TextBox x:Name="ProblemTextBox" HorizontalAlignment="Left" Margin="1398,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357"/>
+        <TextBox x:Name="StatusTextBox" HorizontalAlignment="Left" Margin="1398,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsReadOnly="True"/>
+        <TextBox x:Name="EndDateTextBox" HorizontalAlignment="Left" Margin="1398,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsReadOnly="True"/>
+        <TextBox x:Name="MasterTextBox" HorizontalAlignment="Left" Margin="1398,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="357" IsReadOnly="True"/>
+        <Button x:Name="ChangeButton" Content="Изменить заявку" HorizontalAlignment="Left" Margin="1398,297,0,0" VerticalAlignment="Top" Width="357" Click="ChangeButton_Click"/>
+        <Label x:Name="SearchLabel" Content="Поиск:" HorizontalAlignment="Left" Margin="286,22,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="SearchTextBox" HorizontalAlignment="Left" Margin="338,26,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="942" TextChanged="TextBox_TextChanged" ToolTip="Поиск по модели"/>
+
     </Grid>
 </Window>

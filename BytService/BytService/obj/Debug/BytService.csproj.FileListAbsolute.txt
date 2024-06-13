@@ -31,3 +31,9 @@ Q:\source\repos\demkaf\BytService\BytService\obj\Debug\ClientWindow.baml
 Q:\source\repos\demkaf\BytService\BytService\obj\Debug\ManagerWindow.baml
 Q:\source\repos\demkaf\BytService\BytService\obj\Debug\MasterWindow.baml
 Q:\source\repos\demkaf\BytService\BytService\obj\Debug\OperaterWindow.baml
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\CreateRequestWindow.g.cs
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\CreateRequestWindow.baml
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\ChangeRequestWindow.g.cs
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\ChangeRequestWindow.baml
+Q:\source\repos\demkaf\BytService\BytService\bin\Debug\QRCoder.dll
+Q:\source\repos\demkaf\BytService\BytService\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

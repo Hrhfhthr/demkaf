@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="repairObjectsID" />
     </Key>
-    <Property Name="repairObjectsID" Type="int" Nullable="false" />
+    <Property Name="repairObjectsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="homeTechType" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="homeTechModel" Type="varchar" MaxLength="250" Nullable="false" />
     <Property Name="problemDescryption" Type="varchar" MaxLength="750" Nullable="false" />
@@ -21,7 +21,7 @@
     <Key>
       <PropertyRef Name="requestID" />
     </Key>
-    <Property Name="requestID" Type="int" Nullable="false" />
+    <Property Name="requestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
     <Property Name="repairObjectID" Type="int" Nullable="false" />
     <Property Name="requestStatus" Type="varchar" MaxLength="150" Nullable="false" />
@@ -43,7 +43,7 @@
     <Key>
       <PropertyRef Name="userID" />
     </Key>
-    <Property Name="userID" Type="int" Nullable="false" />
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fio" Type="varchar" MaxLength="350" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="login" Type="varchar" MaxLength="150" Nullable="false" />
