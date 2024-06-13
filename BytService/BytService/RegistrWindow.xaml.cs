@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BytService
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RegistrWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegistrWindow : Window
     {
-        public MainWindow()
+        public RegistrWindow()
         {
             InitializeComponent();
         }
 
-        private void RegistrButton_Click(object sender, RoutedEventArgs e)
+        private void ReturnButton_Click(object sender, RoutedEventArgs e)
         {
-            RegistrWindow registrWindow = new RegistrWindow();
-            registrWindow.ShowDialog();
+            this.Close();
         }
     }
 }

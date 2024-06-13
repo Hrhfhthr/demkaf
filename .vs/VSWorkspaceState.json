@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BytService",
+    "\\BytService\\BytService"
   ],
-  "SelectedNode": "\\Q:\\source\\repos\\demkaf",
+  "SelectedNode": "\\BytService\\BytService\\MainWindow.xaml",
   "PreviewInSolutionExplorer": false
 }

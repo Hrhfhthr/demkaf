@@ -14,3 +14,5 @@ Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.csproj.Generat
 Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.csproj.CoreCompileInputs.cache
 Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.exe
 Q:\source\repos\demkaf\BytService\BytService\obj\Debug\BytService.pdb
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\RegistrWindow.g.cs
+Q:\source\repos\demkaf\BytService\BytService\obj\Debug\RegistrWindow.baml
