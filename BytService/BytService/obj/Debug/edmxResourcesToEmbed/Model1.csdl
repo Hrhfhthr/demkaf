@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="demkafModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="RepairObjects">
+    <Key>
+      <PropertyRef Name="repairObjectsID" />
+    </Key>
+    <Property Name="repairObjectsID" Type="Int32" Nullable="false" />
+    <Property Name="homeTechType" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="homeTechModel" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="problemDescryption" Type="String" MaxLength="750" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_RepairObjects" FromRole="RepairObjects" ToRole="Requests" />
+  </EntityType>
+  <EntityType Name="RepairParts">
+    <Key>
+      <PropertyRef Name="repairPartID" />
+    </Key>
+    <Property Name="repairPartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="repairPartName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="requestID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_RepairParts_Requests" FromRole="RepairParts" ToRole="Requests" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="requestID" />
+    </Key>
+    <Property Name="requestID" Type="Int32" Nullable="false" />
+    <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="repairObjectID" Type="Int32" Nullable="false" />
+    <Property Name="requestStatus" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="completionDate" Type="DateTime" Precision="0" />
+    <Property Name="masterID" Type="Int32" />
+    <Property Name="clientID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="RepairObjects" Relationship="Self.FK_Requests_RepairObjects" FromRole="Requests" ToRole="RepairObjects" />
+    <NavigationProperty Name="RepairParts" Relationship="Self.FK_RepairParts_Requests" FromRole="Requests" ToRole="RepairParts" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Requests_Users" FromRole="Requests" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK_Requests_Users1" FromRole="Requests" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="fio" Type="String" MaxLength="350" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_Users" FromRole="Users" ToRole="Requests" />
+    <NavigationProperty Name="Requests1" Relationship="Self.FK_Requests_Users1" FromRole="Users" ToRole="Requests" />
+  </EntityType>
+  <Association Name="FK_Requests_RepairObjects">
+    <End Role="RepairObjects" Type="Self.RepairObjects" Multiplicity="1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RepairObjects">
+        <PropertyRef Name="repairObjectsID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="repairObjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RepairParts_Requests">
+    <End Role="Requests" Type="Self.Requests" Multiplicity="1" />
+    <End Role="RepairParts" Type="Self.RepairParts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="requestID" />
+      </Principal>
+      <Dependent Role="RepairParts">
+        <PropertyRef Name="requestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="masterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requests_Users1">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Requests">
+        <PropertyRef Name="clientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RepairObjects" EntityType="Self.RepairObjects" />
+    <EntitySet Name="RepairParts" EntityType="Self.RepairParts" />
+    <EntitySet Name="Requests" EntityType="Self.Requests" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Requests_RepairObjects" Association="Self.FK_Requests_RepairObjects">
+      <End Role="RepairObjects" EntitySet="RepairObjects" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RepairParts_Requests" Association="Self.FK_RepairParts_Requests">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="RepairParts" EntitySet="RepairParts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Users" Association="Self.FK_Requests_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requests_Users1" Association="Self.FK_Requests_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Requests" EntitySet="Requests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -12,7 +12,7 @@
         <TextBox x:Name="LoginTextBox" Margin="79,145,20,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top"/>
         <Label x:Name="PassLabel" Content="Пароль:" HorizontalAlignment="Left" Margin="20,178,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="PassTextBox" Margin="79,182,20,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <Button x:Name="AuthoButton" Content="Войти" Margin="20,243,20,0" VerticalAlignment="Top" Background="#FFA5E6BD" BorderBrush="#FFA5E6BD"/>
+        <Button x:Name="AuthoButton" Content="Войти" Margin="20,243,20,0" VerticalAlignment="Top" Background="#FFA5E6BD" BorderBrush="#FFA5E6BD" Click="AuthoButton_Click"/>
         <Button x:Name="RegistrButton" Content="Зарегистрироваться" Margin="20,267,20,0" VerticalAlignment="Top" Background="Gainsboro" BorderBrush="Gainsboro" Click="RegistrButton_Click"/>
 
     </Grid>

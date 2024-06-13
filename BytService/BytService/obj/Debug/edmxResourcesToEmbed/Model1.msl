@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище demkafModelContainer" CdmEntityContainer="DBEntities">
+    <EntitySetMapping Name="RepairObjects">
+      <EntityTypeMapping TypeName="demkafModel.RepairObjects">
+        <MappingFragment StoreEntitySet="RepairObjects">
+          <ScalarProperty Name="repairObjectsID" ColumnName="repairObjectsID" />
+          <ScalarProperty Name="homeTechType" ColumnName="homeTechType" />
+          <ScalarProperty Name="homeTechModel" ColumnName="homeTechModel" />
+          <ScalarProperty Name="problemDescryption" ColumnName="problemDescryption" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RepairParts">
+      <EntityTypeMapping TypeName="demkafModel.RepairParts">
+        <MappingFragment StoreEntitySet="RepairParts">
+          <ScalarProperty Name="repairPartID" ColumnName="repairPartID" />
+          <ScalarProperty Name="repairPartName" ColumnName="repairPartName" />
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="demkafModel.Requests">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="requestID" ColumnName="requestID" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="repairObjectID" ColumnName="repairObjectID" />
+          <ScalarProperty Name="requestStatus" ColumnName="requestStatus" />
+          <ScalarProperty Name="completionDate" ColumnName="completionDate" />
+          <ScalarProperty Name="masterID" ColumnName="masterID" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="demkafModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="demkafModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="fio" ColumnName="fio" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

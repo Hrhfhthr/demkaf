@@ -20,6 +20,38 @@ namespace BytService
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int UserCheck(string login,string password)
+        {
+            int checkResult = 0;
+            foreach(var user in App.DB.Users)
+            {
+                if (user.login == login)
+                {
+                    if (user.password == password)
+                    {
+                        if (user.type == "Менеджер")
+                        {
+                            checkResult = 1;
+                        }
+                        else if(user.type == "Мастер")
+                        {
+                            checkResult = 2;
+                        }
+                        else if (user.type == "Оператор")
+                        {
+                            checkResult = 3;
+                        }
+                        else if (user.type == "Заказчик")
+                        {
+                            checkResult = 4;
+                        }
+                    }
+                }
+            }
+
+
+            return checkResult;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -29,6 +61,39 @@ namespace BytService
         {
             RegistrWindow registrWindow = new RegistrWindow();
             registrWindow.ShowDialog();
+        }
+
+        private void AuthoButton_Click(object sender, RoutedEventArgs e)
+        {
+            int userRole=UserCheck(LoginTextBox.Text, PassTextBox.Text);
+            if (userRole == 0)
+            {
+                MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (userRole == 1)
+            {
+                ManagerWindow managerWindow = new ManagerWindow();
+                managerWindow.Show();
+                this.Close();
+            }
+            else if (userRole == 2)
+            {
+                MasterWindow masterWindow = new MasterWindow();
+                masterWindow.Show();
+                this.Close();
+            }
+            else if (userRole == 3)
+            {
+                OperaterWindow operaterWindow = new OperaterWindow();
+                operaterWindow.Show();
+                this.Close();
+            }
+            else if (userRole == 4)
+            {
+                ClientWindow clientWindow = new ClientWindow();
+                clientWindow.Show();
+                this.Close();
+            }
         }
     }
 }
