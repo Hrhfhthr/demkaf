@@ -86,6 +86,48 @@ namespace BytService
             this.WindowState = WindowState.Maximized;
             InitializeComponent();
             Load();
+            foreach (var request in App.DB.Requests)
+            {
+                if (request.clientID == MainWindow.userID)
+                {
+                    string typeObj = "";
+                    string modelObj = "";
+                    string problemObj = "";
+                    string masterName = "";
+                    string endDate = "";
+
+                    foreach (var repairObj in App.DB.RepairObjects)
+                    {
+                        if (repairObj.repairObjectsID == request.repairObjectID)
+                        {
+                            typeObj = repairObj.homeTechType;
+                            modelObj = repairObj.homeTechModel;
+                            problemObj = repairObj.problemDescryption;
+                        }
+                    }
+
+                    foreach (var master in App.DB.Users)
+                    {
+                        if (master.userID == request.masterID)
+                        {
+                            masterName = master.fio;
+                        }
+                    }
+
+                    if (request.completionDate != null)
+                    {
+                        DateTime d = Convert.ToDateTime(request.completionDate);
+                        endDate = d.ToString("dd/MM/yy");
+                    }
+                    else
+                    {
+                        endDate = null;
+                    }
+
+                    RequestsForClients newRequest = new RequestsForClients { Id = request.requestID, StartDate = request.startDate.ToString("dd/MM/yy"), Type = typeObj, Model = modelObj, Problem = problemObj, Status = request.requestStatus, EndDate = endDate, Master = masterName };
+                    requestsSearch.Add(newRequest);
+                }
+            }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -149,59 +191,25 @@ namespace BytService
             }
         }
 
+        List<RequestsForClients> requestsSearch = new List<RequestsForClients>();
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            List<RequestsForClients> requests = new List<RequestsForClients>();
-            foreach (var search in App.DB.RepairObjects)
+            List<RequestsForClients> answerSearch = new List<RequestsForClients>();
+            int sum=0;
+            foreach (var req in requestsSearch)
             {
-                if (search.homeTechModel == SearchTextBox.Text)
+                if (req.Model.ToString().ToLower().IndexOf(SearchTextBox.Text).ToString().ToLower() != "-1")
                 {
-                    foreach (var request in App.DB.Requests)
-                    {
-                        if (request.clientID == MainWindow.userID)
-                        {
-                            string typeObj = "";
-                            string modelObj = "";
-                            string problemObj = "";
-                            string masterName = "";
-                            string endDate = "";
-
-                            foreach (var repairObj in App.DB.RepairObjects)
-                            {
-                                if (repairObj.repairObjectsID == request.repairObjectID)
-                                {
-                                    typeObj = repairObj.homeTechType;
-                                    modelObj = repairObj.homeTechModel;
-                                    problemObj = repairObj.problemDescryption;
-                                }
-                            }
-
-                            foreach (var master in App.DB.Users)
-                            {
-                                if (master.userID == request.masterID)
-                                {
-                                    masterName = master.fio;
-                                }
-                            }
-
-                            if (request.completionDate != null)
-                            {
-                                DateTime d = Convert.ToDateTime(request.completionDate);
-                                endDate = d.ToString("dd/MM/yy");
-                            }
-                            else
-                            {
-                                endDate = null;
-                            }
-
-                            RequestsForClients newRequest = new RequestsForClients { Id = request.requestID, StartDate = request.startDate.ToString("dd/MM/yy"), Type = typeObj, Model = modelObj, Problem = problemObj, Status = request.requestStatus, EndDate = endDate, Master = masterName };
-                            requests.Add(newRequest);
-                        }
-                    }
+                    answerSearch.Add(req);
+                    sum++;
                 }
             }
-            
-            CreatedRequestsDataGrid.ItemsSource = requests;
+            if (sum == 0)
+            {
+                MessageBox.Show("Нет совпадений.", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            CreatedRequestsDataGrid.ItemsSource = answerSearch;
         }
     }
 }

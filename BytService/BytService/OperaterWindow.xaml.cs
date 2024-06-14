@@ -19,9 +19,20 @@ namespace BytService
     /// </summary>
     public partial class OperaterWindow : Window
     {
+        public class RequestsForOperators
+        {
+
+        }
+        public void Load()
+        {
+            var loadList=App.DB.RepairObjects.ToList();
+            NewRequestsDataGrid.ItemsSource=loadList;
+        }
         public OperaterWindow()
         {
             InitializeComponent();
+            this.WindowState=WindowState.Maximized;
+            Load();
         }
     }
 }
